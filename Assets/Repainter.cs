@@ -6,6 +6,7 @@ using UnityEngine;
 public class Repainter : MonoBehaviour
 {
     private Renderer _renderer;
+    private Color _defaultColor = Color.gray;
 
     private void Awake()
     {
@@ -15,7 +16,11 @@ public class Repainter : MonoBehaviour
     public void ChangeColorToRandom()
     {
         Color randomColor = new Color(Random.value, Random.value, Random.value);
-        Debug.Log(_renderer.material);
         _renderer.material.color = randomColor;
+    }
+
+    public void SetDefaultColor()
+    {
+        _renderer.material.color = _defaultColor;
     }
 }

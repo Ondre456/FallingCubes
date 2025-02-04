@@ -5,21 +5,21 @@ using UnityEngine.Pool;
 
 public class RainSource : MonoBehaviour
 {
-    [SerializeField] private GameObject _prefab;
+    [SerializeField] private Cube _prefab;
     [SerializeField] private GameObject _spawnPoint;
     [SerializeField] private float _repeatRate = 0.3f;
     [SerializeField] private int _poolCapacity = 5;
     [SerializeField] private int _poolMaxSize = 100;
     [SerializeField] private int _areaSize = 45;
 
-    private ObjectPool<GameObject> _pool;
+    private ObjectPool<Cube> _pool;
 
     private void Awake()
     {
-        _pool = new ObjectPool<GameObject>(
+        _pool = new ObjectPool<Cube>(
                 createFunc: () => CreateFunction(),
                 actionOnGet: (obj) => ActionOnGet(obj),
-                actionOnRelease: (obj) => obj.SetActive(false),
+                actionOnRelease: (obj) => obj.gameObject.SetActive(false),
                 actionOnDestroy: (obj) => Destroy(obj),
                 collectionCheck: true,
                 defaultCapacity: _poolCapacity,
@@ -27,7 +27,12 @@ public class RainSource : MonoBehaviour
             );
     }
 
-    private void ActionOnGet(GameObject obj)
+    private void Start()
+    {
+        StartCoroutine(GetCubeCoroutine());
+    }
+
+    private void ActionOnGet(Cube obj)
     {
         Vector3 newPosition = _spawnPoint.transform.position;
 
@@ -35,32 +40,20 @@ public class RainSource : MonoBehaviour
         newPosition.z += Random.Range(-_areaSize, _areaSize + 1);
 
         obj.transform.position = newPosition;
-
-        obj.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        obj.SetActive(true);
+        obj.OnCubeDeactivated += Obj_OnCubeDeactivated;
+        obj.SetZeroSpeed();
+        obj.GetComponent<Repainter>().SetDefaultColor();
+        obj.gameObject.SetActive(true);
     }
 
-    private void Start()
+    private void Obj_OnCubeDeactivated(Cube releasableCube)
     {
-        InvokeRepeating(nameof(GetCube),0.0f, _repeatRate);
+        _pool.Release(releasableCube);
     }
 
-    private void GetCube()
+    private Cube CreateFunction()
     {
-        const int NumberOfSpawnableObjects = 10;
-
-        for (int i = 0; i < NumberOfSpawnableObjects; i++)
-            _pool.Get();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        _pool.Release(other.gameObject);
-    }
-
-    private GameObject CreateFunction()
-    {
-        GameObject instance = Instantiate(_prefab);
+        Cube instance = Instantiate(_prefab);
 
         MeshRenderer meshRenderer = instance.GetComponent<MeshRenderer>();
         if (meshRenderer != null)
@@ -75,5 +68,23 @@ public class RainSource : MonoBehaviour
         }
 
         return instance;
+    }
+
+    private IEnumerator GetCubeCoroutine()
+    {
+        while (true)
+        {
+            GetCube();
+
+            yield return new WaitForSeconds(_repeatRate);
+        }
+    }
+
+    private void GetCube()
+    {
+        const int NumberOfSpawnableObjects = 10;
+
+        for (int i = 0; i < NumberOfSpawnableObjects; i++)
+            _pool.Get();
     }
 }

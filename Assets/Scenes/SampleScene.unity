@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093befec5a6aa5145a19d9251dceb0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 953115150}
+  _prefab: {fileID: 953115156}
   _spawnPoint: {fileID: 553929415}
   _repeatRate: 1
   _poolCapacity: 5
@@ -922,7 +922,7 @@ Transform:
   m_GameObject: {fileID: 2130753835}
   serializedVersion: 2
   m_LocalRotation: {x: -0.22109413, y: 0.66951734, z: 0.21952832, w: 0.6742932}
-  m_LocalPosition: {x: 37, y: 0.8, z: 6.3}
+  m_LocalPosition: {x: 37, y: 8.8, z: 6.3}
   m_LocalScale: {x: 1, y: 1, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
