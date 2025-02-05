@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 553929417}
   - component: {fileID: 553929416}
   m_Layer: 0
-  m_Name: RainSpawner
+  m_Name: RainPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 953115156}
-  _spawnPoint: {fileID: 553929415}
+  _spawnPoint: {x: 0, y: 0, z: 0}
   _repeatRate: 1
   _poolCapacity: 5
   _poolMaxSize: 100
