@@ -56,14 +56,16 @@ public class RainPool : MonoBehaviour
     {
         Cube instance = Instantiate(_prefab);
 
-        MeshRenderer meshRenderer = instance.GetComponent<MeshRenderer>();
-        if (meshRenderer != null)
+        MeshRenderer meshRenderer;
+        
+        if (instance.TryGetComponent<MeshRenderer>(out meshRenderer))
         {
             meshRenderer.enabled = true;
         }
 
-        Collider collider = instance.GetComponent<Collider>();
-        if (collider != null)
+        Collider collider;
+        
+        if (instance.TryGetComponent<Collider>(out collider))
         {
             collider.enabled = true;
         }
@@ -78,7 +80,7 @@ public class RainPool : MonoBehaviour
             for (int i = 0; i < 10; i++)
                 GetCube();
 
-            yield return new WaitForSeconds(_repeatRate);
+            yield return new WaitForSeconds(_repeatRate + 1);
         }
     }
 

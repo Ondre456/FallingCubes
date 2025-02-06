@@ -1,28 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Cube))]
 public class SelfDestructor : MonoBehaviour
 {
-    private float _timeToDestroy;
-    private Cube _cube;
+    public event Action OnDestroy;
 
-    private void Awake()
+    public void ActivateDestruction()
     {
         const float MinTimeToDestroy = 2f;
         const float MaxTimeToDestroy = 5f;
 
-        _timeToDestroy = Random.Range(MinTimeToDestroy, MaxTimeToDestroy);
-        _cube = GetComponent<Cube>();
+        float timeToDestroy = UnityEngine.Random.Range(MinTimeToDestroy, MaxTimeToDestroy + 1);
 
-        StartCoroutine(DeactivateAfterDelay());
+        StartCoroutine(DeactivateAfterDelay(timeToDestroy));
     }
 
-    private IEnumerator DeactivateAfterDelay()
+    private IEnumerator DeactivateAfterDelay(float timeToDestroy)
     {
-        yield return new WaitForSeconds(_timeToDestroy);
+        yield return new WaitForSeconds(timeToDestroy);
 
-        _cube.Deactivate();
+        OnDestroy();
     }
 }
