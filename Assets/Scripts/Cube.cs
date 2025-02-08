@@ -13,7 +13,7 @@ public class Cube : MonoBehaviour
     private float _timeToDestroy;
     private DestructionTimer _destructionTimer;
 
-    public event Action<Cube> OnCubeDeactivated;
+    public event Action<Cube> Deactivated;
 
     private void Awake()
     {
@@ -24,12 +24,12 @@ public class Cube : MonoBehaviour
 
     private void OnEnable()
     {
-        _destructionTimer.OnTimeUntilDestructionExpired += Deactivate;
+        _destructionTimer.TimeUntilDestructionExpired += Deactivate;
     }
 
     private void OnDisable()
     {
-        _destructionTimer.OnTimeUntilDestructionExpired -= Deactivate;
+        _destructionTimer.TimeUntilDestructionExpired -= Deactivate;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -52,8 +52,7 @@ public class Cube : MonoBehaviour
 
     private void Deactivate()
     {
-        OnCubeDeactivated.Invoke(this);
-        OnCubeDeactivated = null;
+        Deactivated?.Invoke(this);
         _isCollisionOccured = false;
     }
 }

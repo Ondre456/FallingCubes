@@ -41,14 +41,16 @@ public class RainPool : MonoBehaviour
         newPosition.z += Random.Range(-_areaSize, _areaSize + 1);
 
         obj.transform.position = newPosition;
-        obj.OnCubeDeactivated += ObjOnCubeDeactivated;
+        obj.Deactivated += OnCubeDeactivated;
         obj.SetZeroSpeed();
-        obj.GetComponent<Repainter>().SetDefaultColor();
+        obj.TryGetComponent(out Repainter repainter);
+        repainter.SetDefaultColor();
         obj.gameObject.SetActive(true);
     }
 
-    private void ObjOnCubeDeactivated(Cube releasableCube)
+    private void OnCubeDeactivated(Cube releasableCube)
     {
+        releasableCube.Deactivated -= OnCubeDeactivated;
         _pool.Release(releasableCube);
     }
 
@@ -79,14 +81,9 @@ public class RainPool : MonoBehaviour
         while (enabled)
         {
             for (int i = 0; i < NumberOfGeneratedCubes; i++)
-                GetCube();
+                _pool.Get();
 
             yield return waitForSeconds;
         }
-    }
-
-    private Cube GetCube()
-    {
-        return _pool.Get();
     }
 }

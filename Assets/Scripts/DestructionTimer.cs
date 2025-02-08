@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestructionTimer : MonoBehaviour
 {
-    public event Action OnTimeUntilDestructionExpired;
+    public event Action TimeUntilDestructionExpired;
 
     public void ActivateDestruction()
     {
@@ -20,6 +20,6 @@ public class DestructionTimer : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToDestroy);
 
-        OnTimeUntilDestructionExpired();
+        TimeUntilDestructionExpired();
     }
 }
