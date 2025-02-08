@@ -1,20 +1,17 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 [RequireComponent(typeof(Repainter))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider))]
-[RequireComponent(typeof(SelfDestructor))]
+[RequireComponent(typeof(DestructionTimer))]
 public class Cube : MonoBehaviour
 {
     private Repainter _repainter;
     private bool _isCollisionOccured;
     private Rigidbody _body;
     private float _timeToDestroy;
-    private SelfDestructor _destrucor;
+    private DestructionTimer _destructionTimer;
 
     public event Action<Cube> OnCubeDeactivated;
 
@@ -22,23 +19,29 @@ public class Cube : MonoBehaviour
     {
         _repainter = GetComponent<Repainter>();
         _body = GetComponent<Rigidbody>();
-        _destrucor = GetComponent<SelfDestructor>();
-        _destrucor.OnDestroy += Deactivate;
+        _destructionTimer = GetComponent<DestructionTimer>();
+    }
+
+    private void OnEnable()
+    {
+        _destructionTimer.OnTimeUntilDestructionExpired += Deactivate;
+    }
+
+    private void OnDisable()
+    {
+        _destructionTimer.OnTimeUntilDestructionExpired -= Deactivate;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Platform platform;
-
-        if (collision.gameObject.TryGetComponent<Platform>(out platform))
+        if (collision.gameObject.TryGetComponent<Platform>(out Platform platform))
         {
             if (_isCollisionOccured == false)
             {
+                _destructionTimer.ActivateDestruction();
                 _repainter.ChangeColorToRandom();
                 _isCollisionOccured = true;
             }
-
-            _destrucor.ActivateDestruction();
         }
     }
 

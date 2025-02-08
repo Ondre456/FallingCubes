@@ -62,7 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\RainPool.cs" />
     <Compile Include="Assets\Scripts\Repainter.cs" />
-    <Compile Include="Assets\Scripts\SelfDestructor.cs" />
+    <Compile Include="Assets\Scripts\DestructionTimer.cs" />
     <Compile Include="Assets\Scripts\Platform.cs" />
     <Compile Include="Assets\Scripts\Cube.cs" />
   </ItemGroup>

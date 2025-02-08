@@ -41,13 +41,13 @@ public class RainPool : MonoBehaviour
         newPosition.z += Random.Range(-_areaSize, _areaSize + 1);
 
         obj.transform.position = newPosition;
-        obj.OnCubeDeactivated += Obj_OnCubeDeactivated;
+        obj.OnCubeDeactivated += ObjOnCubeDeactivated;
         obj.SetZeroSpeed();
         obj.GetComponent<Repainter>().SetDefaultColor();
         obj.gameObject.SetActive(true);
     }
 
-    private void Obj_OnCubeDeactivated(Cube releasableCube)
+    private void ObjOnCubeDeactivated(Cube releasableCube)
     {
         _pool.Release(releasableCube);
     }
@@ -56,16 +56,12 @@ public class RainPool : MonoBehaviour
     {
         Cube instance = Instantiate(_prefab);
 
-        MeshRenderer meshRenderer;
-        
-        if (instance.TryGetComponent<MeshRenderer>(out meshRenderer))
+        if (instance.TryGetComponent<MeshRenderer>(out MeshRenderer meshRenderer))
         {
             meshRenderer.enabled = true;
         }
 
-        Collider collider;
-        
-        if (instance.TryGetComponent<Collider>(out collider))
+        if (instance.TryGetComponent<Collider>(out Collider collider))
         {
             collider.enabled = true;
         }
@@ -75,12 +71,17 @@ public class RainPool : MonoBehaviour
 
     private IEnumerator GetCubeCoroutine()
     {
+        const int NumberOfGeneratedCubes = 10;
+        const int Compensator = 1;
+
+        WaitForSeconds waitForSeconds = new WaitForSeconds(_repeatRate + Compensator);
+
         while (enabled)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < NumberOfGeneratedCubes; i++)
                 GetCube();
 
-            yield return new WaitForSeconds(_repeatRate + 1);
+            yield return waitForSeconds;
         }
     }
 
