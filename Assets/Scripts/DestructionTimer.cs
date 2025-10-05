@@ -6,7 +6,7 @@ public class DestructionTimer : MonoBehaviour
 {
     public event Action TimeUntilDestructionExpired;
 
-    public void ActivateDestruction()
+    public float ActivateDestruction()
     {
         const float MinTimeToDestroy = 2f;
         const float MaxTimeToDestroy = 5f;
@@ -14,6 +14,8 @@ public class DestructionTimer : MonoBehaviour
         float timeToDestroy = UnityEngine.Random.Range(MinTimeToDestroy, MaxTimeToDestroy);
 
         StartCoroutine(CountDownToSelfDestruction(timeToDestroy));
+
+        return timeToDestroy;
     }
 
     private IEnumerator CountDownToSelfDestruction(float timeToDestroy)

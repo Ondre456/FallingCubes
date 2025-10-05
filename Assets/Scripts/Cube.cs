@@ -4,55 +4,37 @@ using UnityEngine;
 [RequireComponent(typeof(Repainter))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(BoxCollider))]
-[RequireComponent(typeof(DestructionTimer))]
-public class Cube : MonoBehaviour
+[RequireComponent(typeof(CubeImpactLogger))]
+public class Cube : SpawnableObject
 {
     private Repainter _repainter;
-    private bool _isCollisionOccured;
-    private Rigidbody _body;
     private float _timeToDestroy;
-    private DestructionTimer _destructionTimer;
-
-    public event Action<Cube> Deactivated;
 
     private void Awake()
     {
+        base.Awake();
         _repainter = GetComponent<Repainter>();
-        _body = GetComponent<Rigidbody>();
-        _destructionTimer = GetComponent<DestructionTimer>();
-    }
-
-    private void OnEnable()
-    {
-        _destructionTimer.TimeUntilDestructionExpired += Deactivate;
-    }
-
-    private void OnDisable()
-    {
-        _destructionTimer.TimeUntilDestructionExpired -= Deactivate;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<Platform>(out Platform platform))
         {
-            if (_isCollisionOccured == false)
+            if (IsCollisionOccured == false)
             {
-                _destructionTimer.ActivateDestruction();
+                DestructionTimer.ActivateDestruction();
                 _repainter.ChangeColorToRandom();
-                _isCollisionOccured = true;
+                IsCollisionOccured = true;
             }
         }
     }
 
-    public void SetZeroSpeed()
-    {
-        _body.velocity = Vector3.zero;
-    }
+}
 
-    private void Deactivate()
+public class CubeImpactLogger : MonoBehaviour
+{
+    public void OnImpact()
     {
-        Deactivated?.Invoke(this);
-        _isCollisionOccured = false;
+        Debug.Log($"Куб {gameObject.name} получил удар");
     }
 }
