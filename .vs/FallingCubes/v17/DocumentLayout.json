@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\assets\\scripts\\repainter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\repainter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\assets\\scripts\\rainpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rainpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|c:\\users\\\u0430\u043D\u0434\u0440\u0435\u0439\\fallingcubes\\assets\\scripts\\spawnerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|c:\\users\\\u0430\u043D\u0434\u0440\u0435\u0439\\fallingcubes\\assets\\scripts\\bomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bomb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\assets\\scripts\\repainter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\repainter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\assets\\scripts\\spawnableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,10 +31,6 @@
       "RelativeMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cube.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\assets\\scripts\\rainpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rainpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\assets\\scripts\\platform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DF6BCBA9-1DC0-2189-DD02-E665003A6B86}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\platform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -38,11 +42,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "SpawnerUI.cs",
+              "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\Assets\\Scripts\\SpawnerUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SpawnerUI.cs",
+              "ToolTip": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\Assets\\Scripts\\SpawnerUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SpawnerUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-05T15:59:30.604Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Repainter.cs",
               "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\Assets\\Scripts\\Repainter.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Repainter.cs",
@@ -50,12 +67,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Repainter.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAiwCAAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T14:27:18.157Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-20T14:27:18.157Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "SpawnableObject.cs",
               "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\Assets\\Scripts\\SpawnableObject.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SpawnableObject.cs",
@@ -67,20 +83,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Bomb.cs",
               "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\Assets\\Scripts\\Bomb.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Bomb.cs",
               "ToolTip": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\Assets\\Scripts\\Bomb.cs",
               "RelativeToolTip": "Assets\\Scripts\\Bomb.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACgAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADgAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-13T14:16:14.521Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Cube.cs",
               "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\Assets\\Scripts\\Cube.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Cube.cs",
@@ -92,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Platform.cs",
               "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\Assets\\Scripts\\Platform.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Platform.cs",
@@ -104,7 +120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "DestructionTimer.cs",
               "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\Assets\\Scripts\\DestructionTimer.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DestructionTimer.cs",
@@ -116,15 +132,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "RainPool.cs",
               "DocumentMoniker": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\Assets\\Scripts\\RainPool.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\RainPool.cs",
               "ToolTip": "C:\\Users\\\u0410\u043D\u0434\u0440\u0435\u0439\\FallingCubes\\Assets\\Scripts\\RainPool.cs",
               "RelativeToolTip": "Assets\\Scripts\\RainPool.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAiwC8AAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAiwI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T16:40:34.981Z"
+              "WhenOpened": "2025-02-05T16:40:34.981Z",
+              "EditorCaption": ""
             }
           ]
         }

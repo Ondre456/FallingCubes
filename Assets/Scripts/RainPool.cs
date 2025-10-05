@@ -22,25 +22,30 @@ public class RainPool : MonoBehaviour
     private void Awake()
     {
         _spawnPoint = transform.position;
+        InitializePools();
+    }
+
+    private void InitializePools()
+    {
         _cubePool = new ObjectPool<Cube>(
-                createFunc: () => CreateFunction(),
-                actionOnGet: (obj) => ActionOnGet(obj),
-                actionOnRelease: (obj) => obj.gameObject.SetActive(false),
-                actionOnDestroy: (obj) => Destroy(obj),
-                collectionCheck: true,
-                defaultCapacity: _poolCapacity,
-                maxSize: _poolMaxSize
-            );
+            createFunc: () => CreateFunction(_prefab),
+            actionOnGet: (obj) => ActionOnGet(obj),
+            actionOnRelease: (obj) => obj.gameObject.SetActive(false),
+            actionOnDestroy: (obj) => Destroy(obj),
+            collectionCheck: true,
+            defaultCapacity: _poolCapacity,
+            maxSize: _poolMaxSize
+        );
 
         _bombPool = new ObjectPool<Bomb>(
-                createFunc: () => Instantiate(_bombPrefab),
-                actionOnGet: (bomb) => bomb.gameObject.SetActive(true),
-                actionOnRelease: (bomb) => bomb.gameObject.SetActive(false),
-                actionOnDestroy: (bomb) => Destroy(bomb),
-                collectionCheck: true,
-                defaultCapacity: 5,
-                maxSize: 20
-            );
+            createFunc: () => CreateFunction(_bombPrefab),
+            actionOnGet: (bomb) => bomb.gameObject.SetActive(true),
+            actionOnRelease: (bomb) => bomb.gameObject.SetActive(false),
+            actionOnDestroy: (bomb) => Destroy(bomb),
+            collectionCheck: true,
+            defaultCapacity: 5,
+            maxSize: 20
+        );
     }
 
     private void Start()
@@ -51,23 +56,32 @@ public class RainPool : MonoBehaviour
     private void ActionOnGet(Cube obj)
     {
         Vector3 newPosition = _spawnPoint;
-
         newPosition.x += Random.Range(-_areaSize, _areaSize + 1);
         newPosition.z += Random.Range(-_areaSize, _areaSize + 1);
 
         obj.transform.position = newPosition;
         ((SpawnableObject)obj).Deactivated += OnCubeDeactivated;
         obj.SetZeroSpeed();
-        obj.TryGetComponent(out Repainter repainter);
-        repainter.SetDefaultColor();
+       
+        if (obj.TryGetComponent(out Repainter repainter))
+        {
+            repainter.SetDefaultColor();
+        }
+
         obj.gameObject.SetActive(true);
+        TotalSpawnedObjectsCount++;
+        CountOfActiveObjects++;
     }
 
     private void ActionOnGet(Bomb bomb)
     {
         bomb.SetZeroSpeed();
-        bomb.TryGetComponent(out Repainter repainter);
-        repainter.SetDefaultColor();
+       
+        if (bomb.TryGetComponent(out Repainter repainter))
+        {
+            repainter.SetDefaultColor();
+        }
+
         bomb.gameObject.SetActive(true);
     }
 
@@ -78,8 +92,12 @@ public class RainPool : MonoBehaviour
         _cubePool.Release(releasableCube as Cube);
         Bomb bomb = _bombPool.Get();
         bomb.transform.position = position;
-        bomb.TryGetComponent(out Repainter repainter);
-        repainter.SetDefaultColor();
+        
+        if (bomb.TryGetComponent(out Repainter repainter))
+        {
+            repainter.SetDefaultColor();
+        }
+
         bomb.gameObject.SetActive(true);
         bomb.Activate();
         bomb.Deactivated += OnBombDeactivated;
@@ -89,25 +107,24 @@ public class RainPool : MonoBehaviour
     {
         Vector3 position = releasableBomb.transform.position;
         _bombPool.Release(releasableBomb as Bomb);
-
-
         releasableBomb.Deactivated -= OnBombDeactivated;
+        CountOfActiveObjects--;
     }
 
-    private Cube CreateFunction()
+    private T CreateFunction<T>(T prefab) where T : SpawnableObject
     {
-        Cube instance = Instantiate(_prefab);
+        T instance = Instantiate(prefab);
 
         if (instance.TryGetComponent<MeshRenderer>(out MeshRenderer meshRenderer))
         {
             meshRenderer.enabled = true;
         }
-
         if (instance.TryGetComponent<Collider>(out Collider collider))
         {
             collider.enabled = true;
         }
 
+        CountOfCreatedObjects++;
         return instance;
     }
 
@@ -118,10 +135,12 @@ public class RainPool : MonoBehaviour
 
         WaitForSeconds waitForSeconds = new WaitForSeconds(_repeatRate + Compensator);
 
-        while (enabled)
+        while (true)
         {
             for (int i = 0; i < NumberOfGeneratedCubes; i++)
+            {
                 _cubePool.Get();
+            }
 
             yield return waitForSeconds;
         }

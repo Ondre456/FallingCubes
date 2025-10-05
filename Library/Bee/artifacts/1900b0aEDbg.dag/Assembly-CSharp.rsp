@@ -360,6 +360,7 @@
 "Assets/Scripts/RainPool.cs"
 "Assets/Scripts/Repainter.cs"
 "Assets/Scripts/SpawnableObject.cs"
+"Assets/Scripts/SpawnerUI.cs"
 -langversion:9.0
 /deterministic
 /optimize-
